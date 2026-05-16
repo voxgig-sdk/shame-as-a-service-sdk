@@ -1,0 +1,28 @@
+# BasicGetShameMessageFlow
+
+main: kit: flow: BasicGetShameMessageFlow:
+{
+  entity: "get_shame_message",
+  kind: "basic",
+  name: "BasicGetShameMessageFlow",
+  step: [
+    {
+      input: {
+        ref: "get_shame_message_ref01",
+        srcdatavar: "get_shame_message_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-get_shame_message_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetShameMessageFlow"
+}

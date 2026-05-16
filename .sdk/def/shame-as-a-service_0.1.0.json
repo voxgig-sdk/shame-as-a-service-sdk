@@ -1,0 +1,198 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Shame as a Service",
+    "version": "1.0.0",
+    "description": "A simple NestJS API that delivers country-specific shame messages. Perfect for adding a bit of humor to your applications or motivating your team with culturally-aware shame quotes. Because logs warn you, errors stop you, but shame changes you.",
+    "contact": {
+      "name": "GitHub Repository",
+      "url": "https://github.com/prakhardubey2002/shame-as-a-service"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://shame-as-a-service.vercel.app",
+      "description": "Production server"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get a shame message",
+        "description": "Returns a random shame message. If a country code is provided, returns a country-specific shame message. Otherwise, attempts to auto-detect the country from the requester's IP address.",
+        "operationId": "getShameMessage",
+        "tags": [
+          "Shame"
+        ],
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Optional country code to get country-specific shame messages. Supported values: usa, india, china, uk, germany, japan, brazil, russia, france, canada, australia, south-korea, mexico, spain, italy, poland",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "usa",
+                "india",
+                "china",
+                "uk",
+                "germany",
+                "japan",
+                "brazil",
+                "russia",
+                "france",
+                "canada",
+                "australia",
+                "south-korea",
+                "mexico",
+                "spain",
+                "italy",
+                "poland"
+              ],
+              "example": "usa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned a shame message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShameResponse"
+                },
+                "examples": {
+                  "withCountryParam": {
+                    "summary": "Shame message with country parameter",
+                    "value": {
+                      "message": "Shame on you! Your code has more bugs than a Silicon Valley startup has pivots.",
+                      "country": "usa",
+                      "ip": "192.168.1.1",
+                      "detectedFromIp": false
+                    }
+                  },
+                  "autoDetected": {
+                    "summary": "Shame message with auto-detected country",
+                    "value": {
+                      "message": "Shame! Your code is more broken than a Mumbai local train during rush hour.",
+                      "country": "india",
+                      "ip": "192.168.1.1",
+                      "detectedFromIp": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded - too many requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "statusCode": 429,
+                  "message": "Too Many Requests",
+                  "error": "Rate limit exceeded. Maximum 200 requests per minute per IP."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "statusCode": 500,
+                  "message": "Internal server error",
+                  "error": "An unexpected error occurred"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ShameResponse": {
+        "type": "object",
+        "required": [
+          "message",
+          "country"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The shame message tailored to the specified or detected country",
+            "example": "Shame on you! Your code has more bugs than a Silicon Valley startup has pivots."
+          },
+          "country": {
+            "type": "string",
+            "description": "The country code for which the shame message was generated",
+            "example": "usa"
+          },
+          "ip": {
+            "type": "string",
+            "description": "The IP address of the requester (when available)",
+            "example": "192.168.1.1"
+          },
+          "detectedFromIp": {
+            "type": "boolean",
+            "description": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
+            "example": true
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "statusCode",
+          "message"
+        ],
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP status code",
+            "example": 429
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Too Many Requests"
+          },
+          "error": {
+            "type": "string",
+            "description": "Detailed error description",
+            "example": "Rate limit exceeded. Maximum 200 requests per minute per IP."
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Shame",
+      "description": "Endpoints for receiving culturally-aware shame messages"
+    }
+  ],
+  "x-rate-limit": {
+    "limit": 200,
+    "window": "1 minute",
+    "scope": "per IP address"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "get_shame_message": {
+      "GET_SHAME_MESSAGE00": {
+        "country": "s28",
+        "detected_from_ip": false,
+        "ip": "s2a",
+        "message": "s2b"
+      },
+      "GET_SHAME_MESSAGE01": {
+        "country": "s50",
+        "detected_from_ip": false,
+        "ip": "s52",
+        "message": "s53"
+      },
+      "GET_SHAME_MESSAGE02": {
+        "country": "s78",
+        "detected_from_ip": false,
+        "ip": "s7a",
+        "message": "s7b"
+      }
+    }
+  },
+  "new": {
+    "get_shame_message": {
+      "get_shame_message_ref01": {
+        "country": "sa0",
+        "detected_from_ip": false,
+        "ip": "sa2",
+        "message": "sa3"
+      }
+    }
+  }
+}

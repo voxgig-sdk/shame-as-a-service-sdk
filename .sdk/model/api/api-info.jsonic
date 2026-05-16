@@ -1,0 +1,32 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "GitHub Repository"
+        url: "https://github.com/prakhardubey2002/shame-as-a-service"
+      }
+      description: "A simple NestJS API that delivers country-specific shame messages. Perfect for adding a bit of humor to your applications or motivating your team with culturally-aware shame quotes. Because logs warn you, errors stop you, but shame changes you."
+      license: {
+        name: "MIT"
+        url: "https://opensource.org/licenses/MIT"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://shame-as-a-service.vercel.app"
+        }
+        {
+          description: "Local development server"
+          url: "http://localhost:3000"
+        }
+      ]
+      title: "Shame as a Service"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

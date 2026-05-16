@@ -1,0 +1,11 @@
+# ShameAsAService SDK exists test
+
+require "minitest/autorun"
+require_relative "../ShameAsAService_sdk"
+
+class ExistsTest < Minitest::Test
+  def test_create_test_sdk
+    testsdk = ShameAsAServiceSDK.test(nil, nil)
+    assert !testsdk.nil?
+  end
+end

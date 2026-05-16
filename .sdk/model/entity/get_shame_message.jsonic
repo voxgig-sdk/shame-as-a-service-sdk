@@ -1,0 +1,66 @@
+# Entity: get_shame_message
+
+main: kit: entity: get_shame_message: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "country"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "detected_from_ip"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "ip"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "message"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "get_shame_message"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "usa"
+                kind: "query"
+                name: "country"
+                orig: "country"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/"
+          select: {
+            exist: [
+              "country"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
