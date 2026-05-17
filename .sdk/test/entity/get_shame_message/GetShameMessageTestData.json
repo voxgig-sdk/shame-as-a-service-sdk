@@ -5,19 +5,22 @@
         "country": "s28",
         "detected_from_ip": false,
         "ip": "s2a",
-        "message": "s2b"
+        "message": "s2b",
+        "id": "GET_SHAME_MESSAGE00"
       },
       "GET_SHAME_MESSAGE01": {
         "country": "s50",
         "detected_from_ip": false,
         "ip": "s52",
-        "message": "s53"
+        "message": "s53",
+        "id": "GET_SHAME_MESSAGE01"
       },
       "GET_SHAME_MESSAGE02": {
         "country": "s78",
         "detected_from_ip": false,
         "ip": "s7a",
-        "message": "s7b"
+        "message": "s7b",
+        "id": "GET_SHAME_MESSAGE02"
       }
     }
   },

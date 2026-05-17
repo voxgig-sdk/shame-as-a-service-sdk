@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/shame-as-a-service-sdk/go/utility/struct"
 )
 
 type ShameAsAServiceSDK struct {
