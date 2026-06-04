@@ -67,14 +67,12 @@ function get_shame_message_direct_setup($mockres)
     $env = Runner::env_override([
         "SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID" => [],
         "SHAMEASASERVICE_TEST_LIVE" => "FALSE",
-        "SHAMEASASERVICE_APIKEY" => "NONE",
     ]);
 
     $live = $env["SHAMEASASERVICE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["SHAMEASASERVICE_APIKEY"],
         ];
         $client = new ShameAsAServiceSDK($merged_opts);
         return [

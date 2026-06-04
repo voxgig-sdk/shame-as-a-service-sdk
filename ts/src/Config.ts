@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://shame-as-a-service.vercel.app',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

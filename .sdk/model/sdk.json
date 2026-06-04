@@ -25,7 +25,17 @@
           }
         ],
         "title": "Shame as a Service",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Get a country-specific shame message based on your IP geolocation",
+        "homepage": "https://shame-as-a-service.vercel.app",
+        "docs_url": "https://freepublicapis.com/shame-as-a-service",
+        "license_short": "MIT",
+        "license_md": "- Released under the MIT licence\n- Free for personal and commercial use with attribution to the project\n- Provided as-is with no warranty",
+        "about_md": "Shame as a Service is a small NestJS-powered API that returns a humorous, country-themed shame message based on the caller's IP geolocation. The service is hosted on Vercel at [shame-as-a-service.vercel.app](https://shame-as-a-service.vercel.app).\n\nWhat you get from the API:\n\n- A JSON response with `message` (the shame quote), `country` (the detected country, or `unknown`), and `ip` (the resolved caller IP)\n- Country detection driven by the requesting IP address\n- A single GET endpoint at the service root\n\nOperational notes: the service is publicly reachable without authentication. CORS is reported as disabled, so browser-based callers may need a proxy. Because country selection depends on the caller IP, requests from servers, CDNs, or VPN exit nodes can return `unknown` or a country that does not match the end user.",
+        "entity_desc": {
+          "get_shame_message": "Returns a single shame message tailored to the caller's detected country, with the message, country code, and resolved IP in the JSON body."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -33,7 +43,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "get_shame_message": {

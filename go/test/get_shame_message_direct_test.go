@@ -99,14 +99,12 @@ func get_shame_messageDirectSetup(mockres any) *get_shame_messageDirectSetupResu
 	env := envOverride(map[string]any{
 		"SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID": map[string]any{},
 		"SHAMEASASERVICE_TEST_LIVE":    "FALSE",
-		"SHAMEASASERVICE_APIKEY":       "NONE",
 	})
 
 	live := env["SHAMEASASERVICE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["SHAMEASASERVICE_APIKEY"],
 		}
 		client := sdk.NewShameAsAServiceSDK(mergedOpts)
 

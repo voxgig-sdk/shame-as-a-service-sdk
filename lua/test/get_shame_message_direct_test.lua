@@ -62,14 +62,12 @@ function get_shame_message_direct_setup(mockres)
   local env = runner.env_override({
     ["SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID"] = {},
     ["SHAMEASASERVICE_TEST_LIVE"] = "FALSE",
-    ["SHAMEASASERVICE_APIKEY"] = "NONE",
   })
 
   local live = env["SHAMEASASERVICE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["SHAMEASASERVICE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {
