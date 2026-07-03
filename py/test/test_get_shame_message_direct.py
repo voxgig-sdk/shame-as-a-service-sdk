@@ -59,12 +59,14 @@ def _get_shame_message_direct_setup(mockres):
     env = runner.env_override({
         "SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID": {},
         "SHAMEASASERVICE_TEST_LIVE": "FALSE",
+        "SHAMEASASERVICE_APIKEY": "NONE",
     })
 
     live = env.get("SHAMEASASERVICE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("SHAMEASASERVICE_APIKEY"),
         }
         client = ShameAsAServiceSDK(merged_opts)
         return {

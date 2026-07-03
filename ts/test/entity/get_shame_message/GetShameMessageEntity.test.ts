@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID': idmap,
     'SHAME_AS_A_SERVICE_TEST_LIVE': 'FALSE',
     'SHAME_AS_A_SERVICE_TEST_EXPLAIN': 'FALSE',
+    'SHAME_AS_A_SERVICE_APIKEY': 'NONE',
   })
 
   idmap = env['SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ShameAsAServiceSDK(merge([
       {
+        apikey: env.SHAME_AS_A_SERVICE_APIKEY,
       },
       extra
     ]))

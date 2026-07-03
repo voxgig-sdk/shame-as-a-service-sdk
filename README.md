@@ -1,20 +1,8 @@
 # ShameAsAService SDK
 
-Get a country-specific shame message based on your IP geolocation
+Shame as a Service client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Shame as a Service
-
-Shame as a Service is a small NestJS-powered API that returns a humorous, country-themed shame message based on the caller's IP geolocation. The service is hosted on Vercel at [shame-as-a-service.vercel.app](https://shame-as-a-service.vercel.app).
-
-What you get from the API:
-
-- A JSON response with `message` (the shame quote), `country` (the detected country, or `unknown`), and `ip` (the resolved caller IP)
-- Country detection driven by the requesting IP address
-- A single GET endpoint at the service root
-
-Operational notes: the service is publicly reachable without authentication. CORS is reported as disabled, so browser-based callers may need a proxy. Because country selection depends on the caller IP, requests from servers, CDNs, or VPN exit nodes can return `unknown` or a country that does not match the end user.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install shame-as-a-service-sdk
 luarocks install shame-as-a-service-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ShameAsAServiceSDK } from 'shame-as-a-service'
 
-const client = new ShameAsAServiceSDK({})
+const client = new ShameAsAServiceSDK({
+  apikey: process.env.SHAME-AS-A-SERVICE_APIKEY,
+})
 
+// Load getshamemessage data
+const getshamemessage = await client.GetShameMessage().load({})
+console.log(getshamemessage.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetShameMessage** | Returns a single shame message tailored to the caller's detected country, with the message, country code, and resolved IP in the JSON body. | `/` |
+| **GetShameMessage** |  | `/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from shameasaservice_sdk import ShameAsAServiceSDK
 
-client = ShameAsAServiceSDK({})
+client = ShameAsAServiceSDK({
+    "apikey": os.environ.get("SHAME-AS-A-SERVICE_APIKEY"),
+})
 
 
 # Load a specific getshamemessage
-getshamemessage, err = client.GetShameMessage(None).load(
-    {"id": "example_id"}, None
-)
+getshamemessage, err = client.GetShameMessage().load({"id": "example_id"})
+print(getshamemessage)
 ```
 
 ### PHP
@@ -125,13 +119,14 @@ getshamemessage, err = client.GetShameMessage(None).load(
 <?php
 require_once 'shameasaservice_sdk.php';
 
-$client = new ShameAsAServiceSDK([]);
+$client = new ShameAsAServiceSDK([
+    "apikey" => getenv("SHAME-AS-A-SERVICE_APIKEY"),
+]);
 
 
 // Load a specific getshamemessage
-[$getshamemessage, $err] = $client->GetShameMessage(null)->load(
-    ["id" => "example_id"], null
-);
+[$getshamemessage, $err] = $client->GetShameMessage()->load(["id" => "example_id"]);
+print_r($getshamemessage);
 ```
 
 ### Golang
@@ -139,8 +134,13 @@ $client = new ShameAsAServiceSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/shame-as-a-service-sdk/go"
 
-client := sdk.NewShameAsAServiceSDK(map[string]any{})
+client := sdk.NewShameAsAServiceSDK(map[string]any{
+    "apikey": os.Getenv("SHAME-AS-A-SERVICE_APIKEY"),
+})
 
+// Load getshamemessage data
+getshamemessage, err := client.GetShameMessage(nil).Load(map[string]any{}, nil)
+fmt.Println(getshamemessage)
 ```
 
 ### Ruby
@@ -148,13 +148,14 @@ client := sdk.NewShameAsAServiceSDK(map[string]any{})
 ```ruby
 require_relative "ShameAsAService_sdk"
 
-client = ShameAsAServiceSDK.new({})
+client = ShameAsAServiceSDK.new({
+  "apikey" => ENV["SHAME-AS-A-SERVICE_APIKEY"],
+})
 
 
 # Load a specific getshamemessage
-getshamemessage, err = client.GetShameMessage(nil).load(
-  { "id" => "example_id" }, nil
-)
+getshamemessage, err = client.GetShameMessage().load({ "id" => "example_id" })
+puts getshamemessage
 ```
 
 ### Lua
@@ -162,13 +163,14 @@ getshamemessage, err = client.GetShameMessage(nil).load(
 ```lua
 local sdk = require("shame-as-a-service_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("SHAME-AS-A-SERVICE_APIKEY"),
+})
 
 
 -- Load a specific getshamemessage
-local getshamemessage, err = client:GetShameMessage(nil):load(
-  { id = "example_id" }, nil
-)
+local getshamemessage, err = client:GetShameMessage():load({ id = "example_id" })
+print(getshamemessage)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +189,21 @@ const result = await client.GetShameMessage().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ShameAsAServiceSDK.test(None, None)
-result, err = client.GetShameMessage(None).load(
-    {"id": "test01"}, None
-)
+client = ShameAsAServiceSDK.test()
+result, err = client.GetShameMessage().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ShameAsAServiceSDK::test(null, null);
-[$result, $err] = $client->GetShameMessage(null)->load(
-    ["id" => "test01"], null
-);
+$client = ShameAsAServiceSDK::test();
+[$result, $err] = $client->GetShameMessage()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.GetShameMessage(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +212,15 @@ result, err := client.GetShameMessage(nil).Load(
 ### Ruby
 
 ```ruby
-client = ShameAsAServiceSDK.test(nil, nil)
-result, err = client.GetShameMessage(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ShameAsAServiceSDK.test
+result, err = client.GetShameMessage().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:GetShameMessage(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:GetShameMessage():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Shame as a Service
-
-- Upstream: [https://shame-as-a-service.vercel.app](https://shame-as-a-service.vercel.app)
-- API docs: [https://freepublicapis.com/shame-as-a-service](https://freepublicapis.com/shame-as-a-service)
-
-- Released under the MIT licence
-- Free for personal and commercial use with attribution to the project
-- Provided as-is with no warranty
 
 ---
 

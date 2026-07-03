@@ -20,6 +20,9 @@ class ShameAsAServiceConfig
             ],
             "options" => [
                 "base" => "https://shame-as-a-service.vercel.app",
+                "auth" => [
+                    "prefix" => "Bearer",
+                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -31,55 +34,58 @@ class ShameAsAServiceConfig
         'get_shame_message' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'country',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'detected_from_ip',
               'req' => false,
               'type' => '`$BOOLEAN`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'ip',
               'req' => false,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'message',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'get_shame_message',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'usa',
                         'kind' => 'query',
                         'name' => 'country',
                         'orig' => 'country',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
                   'method' => 'GET',
                   'orig' => '/',
+                  'parts' => [],
                   'select' => [
                     'exist' => [
                       'country',
@@ -89,12 +95,9 @@ class ShameAsAServiceConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
-                  'parts' => [],
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],

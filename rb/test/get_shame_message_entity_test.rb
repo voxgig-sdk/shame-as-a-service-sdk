@@ -82,6 +82,7 @@ def get_shame_message_basic_setup(extra)
     "SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID" => idmap,
     "SHAMEASASERVICE_TEST_LIVE" => "FALSE",
     "SHAMEASASERVICE_TEST_EXPLAIN" => "FALSE",
+    "SHAMEASASERVICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -93,6 +94,7 @@ def get_shame_message_basic_setup(extra)
   if env["SHAMEASASERVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["SHAMEASASERVICE_APIKEY"],
       },
       extra || {},
     ])

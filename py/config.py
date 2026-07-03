@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://shame-as-a-service.vercel.app",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,55 +29,58 @@ def make_config():
       "get_shame_message": {
         "fields": [
           {
+            "active": True,
             "name": "country",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "detected_from_ip",
             "req": False,
             "type": "`$BOOLEAN`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "ip",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "message",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "get_shame_message",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": "usa",
                       "kind": "query",
                       "name": "country",
                       "orig": "country",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
                 "method": "GET",
                 "orig": "/",
+                "parts": [],
                 "select": {
                   "exist": [
                     "country",
@@ -84,12 +90,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "parts": [],
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
