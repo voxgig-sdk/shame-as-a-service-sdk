@@ -10,7 +10,7 @@ The Lua SDK for the ShameAsAService API — an entity-oriented client using Lua 
 
 ## Install
 ```bash
-luarocks install shame-as-a-service-sdk
+luarocks install voxgig-sdk-shame-as-a-service
 ```
 
 If the module is not yet published, add the source directory to

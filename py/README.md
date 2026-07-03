@@ -10,7 +10,7 @@ The Python SDK for the ShameAsAService API — an entity-oriented client followi
 
 ## Install
 ```bash
-pip install shame-as-a-service-sdk
+pip install voxgig-sdk-shame-as-a-service
 ```
 
 Or install from source:

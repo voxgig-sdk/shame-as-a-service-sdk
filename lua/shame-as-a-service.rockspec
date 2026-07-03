@@ -8,12 +8,14 @@ source = {
   dir = "shame-as-a-service-sdk/lua"
 }
 description = {
-  summary = "ShameAsAService SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Shame as a Service public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/shame-as-a-service-sdk",
+  issues_url = "https://github.com/voxgig-sdk/shame-as-a-service-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "shame-as-a-service" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

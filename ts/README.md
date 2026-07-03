@@ -10,7 +10,7 @@ The TypeScript SDK for the ShameAsAService API — a type-safe, entity-oriented 
 
 ## Install
 ```bash
-npm install shame-as-a-service
+npm install @voxgig-sdk/shame-as-a-service
 ```
 ## Tutorial: your first API call
 

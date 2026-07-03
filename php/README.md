@@ -10,7 +10,7 @@ The PHP SDK for the ShameAsAService API — an entity-oriented client using PHP 
 
 ## Install
 ```bash
-composer require voxgig/shame-as-a-service-sdk
+composer require voxgig-sdk/shame-as-a-service
 ```
 
 

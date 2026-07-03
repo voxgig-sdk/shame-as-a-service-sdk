@@ -10,13 +10,13 @@ The Ruby SDK for the ShameAsAService API — an entity-oriented client using idi
 
 ## Install
 ```bash
-gem install shame-as-a-service-sdk
+gem install voxgig-sdk-shame-as-a-service
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "shame-as-a-service-sdk"
+gem "voxgig-sdk-shame-as-a-service"
 ```
 
 Then run:
