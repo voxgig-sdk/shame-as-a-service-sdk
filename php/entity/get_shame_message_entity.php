@@ -55,6 +55,9 @@ class GetShameMessageEntity
         return new GetShameMessageEntity($this->_client, $opts);
     }
 
+    /**
+     * @param GetShameMessage|array $args GetShameMessage data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class GetShameMessageEntity
         }
     }
 
+    /**
+     * @return GetShameMessage|array The current GetShameMessage data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of GetShameMessage fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class GetShameMessageEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of GetShameMessage fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class GetShameMessageEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single GetShameMessage.
+     *
+     * @param GetShameMessageLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed GetShameMessageLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return GetShameMessage|array The loaded GetShameMessage as an assoc-array at the
+     *   SDK boundary; throws ShameAsAServiceError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -117,7 +138,7 @@ class GetShameMessageEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

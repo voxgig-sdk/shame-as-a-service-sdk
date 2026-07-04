@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `ShameAsAServiceSDK.test()`.
 ## GetShameMessageEntity
 
 ```ts
-const get_shame_message = client.GetShameMessage()
+const get_shame_message = client.get_shame_message
 ```
 
 ### Fields
@@ -129,7 +128,7 @@ const get_shame_message = client.GetShameMessage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetShameMessage().load({ id: 'get_shame_message_id' })
+const result = await client.get_shame_message.load({ id: 'get_shame_message_id' })
 ```
 
 ### Common Methods

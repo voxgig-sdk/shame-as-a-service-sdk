@@ -45,6 +45,7 @@ class GetShameMessageEntity
     end
   end
 
+  # @return [GetShameMessage, Hash] the current GetShameMessage data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class GetShameMessageEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of GetShameMessage fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single GetShameMessage.
+  #
+  # @param reqmatch [GetShameMessageLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [GetShameMessage, Hash] the loaded GetShameMessage; raises ShameAsAServiceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

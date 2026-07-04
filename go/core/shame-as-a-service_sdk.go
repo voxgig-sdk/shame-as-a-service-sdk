@@ -245,6 +245,9 @@ func (sdk *ShameAsAServiceSDK) Direct(fetchargs map[string]any) (map[string]any,
 }
 
 
+// GetShameMessage returns a GetShameMessage entity bound to this client.
+// Idiomatic usage: client.GetShameMessage(nil).List(nil, nil) or
+// client.GetShameMessage(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ShameAsAServiceSDK) GetShameMessage(data map[string]any) ShameAsAServiceEntity {
 	return NewGetShameMessageEntityFunc(sdk, data)
 }

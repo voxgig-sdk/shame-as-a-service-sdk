@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GetShameMessageLoadMatch
+---@param ctrl? table
+---@return GetShameMessage
+---@return string? err
 function GetShameMessageEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

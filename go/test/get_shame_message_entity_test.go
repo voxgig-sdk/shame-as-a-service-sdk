@@ -117,7 +117,6 @@ func get_shame_messageBasicSetup(extra map[string]any) *entityTestSetup {
 		"SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID": idmap,
 		"SHAMEASASERVICE_TEST_LIVE":      "FALSE",
 		"SHAMEASASERVICE_TEST_EXPLAIN":   "FALSE",
-		"SHAMEASASERVICE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID"])
@@ -128,7 +127,6 @@ func get_shame_messageBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["SHAMEASASERVICE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["SHAMEASASERVICE_APIKEY"],
 			},
 			extra,
 		})

@@ -21,7 +21,7 @@ class GetShameMessageDirectTest extends TestCase
         $client = $setup["client"];
 
 
-        [$result, $err] = $client->direct([
+        $result = $client->direct([
             "path" => "",
             "method" => "GET",
             "params" => [],
@@ -30,8 +30,8 @@ class GetShameMessageDirectTest extends TestCase
             // Live mode is lenient: synthetic IDs frequently 4xx. Skip
             // rather than fail when the load endpoint isn't reachable
             // with the IDs we can construct from setup.idmap.
-            if ($err !== null) {
-                $this->markTestSkipped("load call failed (likely synthetic IDs against live API): " . (string)$err);
+            if (!empty($result["err"])) {
+                $this->markTestSkipped("load call failed (likely synthetic IDs against live API): " . (string)$result["err"]);
                 return;
             }
             if (empty($result["ok"])) {
@@ -44,7 +44,7 @@ class GetShameMessageDirectTest extends TestCase
                 return;
             }
         } else {
-            $this->assertNull($err);
+            $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
             $this->assertNotNull($result["data"]);
@@ -67,14 +67,12 @@ function get_shame_message_direct_setup($mockres)
     $env = Runner::env_override([
         "SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID" => [],
         "SHAMEASASERVICE_TEST_LIVE" => "FALSE",
-        "SHAMEASASERVICE_APIKEY" => "NONE",
     ]);
 
     $live = $env["SHAMEASASERVICE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["SHAMEASASERVICE_APIKEY"],
         ];
         $client = new ShameAsAServiceSDK($merged_opts);
         return [

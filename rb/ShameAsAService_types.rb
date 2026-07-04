@@ -1,0 +1,52 @@
+# frozen_string_literal: true
+
+# Typed models for the ShameAsAService SDK.
+#
+# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+# params (op.<name>.points[].args.params[]). Member types come from the
+# canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+# @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
+# annotations document the shapes. Do not edit by hand.
+
+# GetShameMessage entity data model.
+#
+# @!attribute [rw] country
+#   @return [String]
+#
+# @!attribute [rw] detected_from_ip
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ip
+#   @return [String, nil]
+#
+# @!attribute [rw] message
+#   @return [String]
+GetShameMessage = Struct.new(
+  :country,
+  :detected_from_ip,
+  :ip,
+  :message,
+  keyword_init: true
+)
+
+# Match filter for GetShameMessage#load (any subset of GetShameMessage fields).
+#
+# @!attribute [rw] country
+#   @return [String, nil]
+#
+# @!attribute [rw] detected_from_ip
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ip
+#   @return [String, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+GetShameMessageLoadMatch = Struct.new(
+  :country,
+  :detected_from_ip,
+  :ip,
+  :message,
+  keyword_init: true
+)
+

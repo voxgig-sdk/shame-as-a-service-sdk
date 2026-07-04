@@ -49,8 +49,7 @@ class GetShameMessageEntityTest extends TestCase
         // LOAD
         $get_shame_message_ref01_ent = $client->GetShameMessage(null);
         $get_shame_message_ref01_match_dt0 = [];
-        [$get_shame_message_ref01_data_dt0_loaded, $err] = $get_shame_message_ref01_ent->load($get_shame_message_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $get_shame_message_ref01_data_dt0_loaded = $get_shame_message_ref01_ent->load($get_shame_message_ref01_match_dt0, null);
         $this->assertNotNull($get_shame_message_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function get_shame_message_basic_setup($extra)
         "SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID" => $idmap,
         "SHAMEASASERVICE_TEST_LIVE" => "FALSE",
         "SHAMEASASERVICE_TEST_EXPLAIN" => "FALSE",
-        "SHAMEASASERVICE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function get_shame_message_basic_setup($extra)
     if ($env["SHAMEASASERVICE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SHAMEASASERVICE_APIKEY"],
             ],
             $extra ?? [],
         ]);

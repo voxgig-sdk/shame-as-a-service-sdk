@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:get_shame_message():list() / client:get_shame_message():load({ id = ... })
+function ShameAsAServiceSDK:get_shame_message(data)
+  local EntityMod = require("entity.get_shame_message_entity")
+  if data == nil then
+    if self._get_shame_message == nil then
+      self._get_shame_message = EntityMod.new(self, nil)
+    end
+    return self._get_shame_message
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_shame_message() instead.
 function ShameAsAServiceSDK:GetShameMessage(data)
   local EntityMod = require("entity.get_shame_message_entity")
   return EntityMod.new(self, data)

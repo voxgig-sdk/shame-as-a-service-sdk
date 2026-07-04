@@ -2,6 +2,8 @@
 
 import { GetShameMessageEntity } from './entity/GetShameMessageEntity'
 
+export type * from './ShameAsAServiceTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class ShameAsAServiceSDK {
 
 
 
+  _get_shame_message?: GetShameMessageEntity
+
+  // Idiomatic facade: `client.get_shame_message.list()` / `client.get_shame_message.load({ id })`.
+  get get_shame_message(): GetShameMessageEntity {
+    return (this._get_shame_message ??= new GetShameMessageEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_shame_message` instead. */
   GetShameMessage(data?: any) {
     const self = this
     return new GetShameMessageEntity(self,data)

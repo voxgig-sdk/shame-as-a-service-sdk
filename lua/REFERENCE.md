@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -84,7 +83,7 @@ same parameters as `direct()`.
 ## GetShameMessageEntity
 
 ```lua
-local get_shame_message = client:GetShameMessage(nil)
+local get_shame_message = client:get_shame_message(nil)
 ```
 
 ### Fields
@@ -103,7 +102,7 @@ local get_shame_message = client:GetShameMessage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetShameMessage():load({ id = "get_shame_message_id" })
+local result, err = client:get_shame_message():load({ id = "get_shame_message_id" })
 ```
 
 ### Common Methods

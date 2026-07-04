@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GetShameMessage,
+  GetShameMessageLoadMatch,
+} from '../ShameAsAServiceTypes'
 
 // TODO: needs Entity superclass
-class GetShameMessageEntity extends ShameAsAServiceEntityBase {
+class GetShameMessageEntity extends ShameAsAServiceEntityBase<GetShameMessage> {
 
   constructor(client: ShameAsAServiceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GetShameMessageEntity extends ShameAsAServiceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GetShameMessageLoadMatch, ctrl?: Control): Promise<GetShameMessage> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GetShameMessageEntity extends ShameAsAServiceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GetShameMessage> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

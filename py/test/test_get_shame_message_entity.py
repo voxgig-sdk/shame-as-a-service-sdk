@@ -49,8 +49,7 @@ class TestGetShameMessageEntity:
         # LOAD
         get_shame_message_ref01_ent = client.GetShameMessage(None)
         get_shame_message_ref01_match_dt0 = {}
-        get_shame_message_ref01_data_dt0_loaded, err = get_shame_message_ref01_ent.load(get_shame_message_ref01_match_dt0, None)
-        assert err is None
+        get_shame_message_ref01_data_dt0_loaded = get_shame_message_ref01_ent.load(get_shame_message_ref01_match_dt0, None)
         assert get_shame_message_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _get_shame_message_basic_setup(extra):
         "SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID": idmap,
         "SHAMEASASERVICE_TEST_LIVE": "FALSE",
         "SHAMEASASERVICE_TEST_EXPLAIN": "FALSE",
-        "SHAMEASASERVICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _get_shame_message_basic_setup(extra):
     if env.get("SHAMEASASERVICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SHAMEASASERVICE_APIKEY"),
             },
             extra or {},
         ])

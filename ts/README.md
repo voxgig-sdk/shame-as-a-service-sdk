@@ -9,9 +9,12 @@ The TypeScript SDK for the ShameAsAService API — a type-safe, entity-oriented 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/shame-as-a-service
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases](https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ShameAsAServiceSDK } from 'shame-as-a-service'
+import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service'
 
-const client = new ShameAsAServiceSDK({
-  apikey: process.env.SHAME-AS-A-SERVICE_APIKEY,
-})
+const client = new ShameAsAServiceSDK()
 ```
 
 ### 3. Load a getshamemessage
 
 ```ts
-const result = await client.GetShameMessage().load({ id: 'example_id' })
+const result = await client.getshamemessage.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ShameAsAServiceSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.getshamemessage.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ShameAsAServiceSDK({ apikey: '...' })
+const client = new ShameAsAServiceSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.getshamemessage
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new ShameAsAServiceSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new ShameAsAServiceSDK({
 Create a `.env.local` file at the project root:
 
 ```
-SHAME-AS-A-SERVICE_TEST_LIVE=TRUE
-SHAME-AS-A-SERVICE_APIKEY=<your-key>
+SHAME_AS_A_SERVICE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new ShameAsAServiceSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new ShameAsAServiceSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -269,7 +266,7 @@ API path: `/`
 
 ### GetShameMessage
 
-Create an instance: `const get_shame_message = client.GetShameMessage()`
+Create an instance: `const get_shame_message = client.get_shame_message`
 
 #### Operations
 
@@ -289,7 +286,7 @@ Create an instance: `const get_shame_message = client.GetShameMessage()`
 #### Example: Load
 
 ```ts
-const get_shame_message = await client.GetShameMessage().load({ id: 'get_shame_message_id' })
+const get_shame_message = await client.get_shame_message.load({ id: 'get_shame_message_id' })
 ```
 
 
@@ -350,7 +347,7 @@ shame-as-a-service/
 Import the SDK from the package root:
 
 ```ts
-import { ShameAsAServiceSDK } from 'shame-as-a-service'
+import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service'
 ```
 
 ### Entity state
@@ -360,11 +357,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const getshamemessage = client.getshamemessage
+await getshamemessage.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// getshamemessage.data() now returns the loaded getshamemessage data
+// getshamemessage.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration
