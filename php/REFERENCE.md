@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## GetShameMessageEntity
 
 ```php
-$get_shame_message = $client->get_shame_message();
+$get_shame_message = $client->GetShameMessage();
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ $get_shame_message = $client->get_shame_message();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->get_shame_message()->load(["id" => "get_shame_message_id"]);
+$result = $client->GetShameMessage()->load(["id" => "get_shame_message_id"]);
 ```
 
 ### Common Methods

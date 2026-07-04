@@ -233,10 +233,10 @@ class ShameAsAServiceSDK
 
     private $_get_shame_message = null;
 
-    // Idiomatic facade: $client->get_shame_message()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetShameMessage() (PHP method
-    // names are case-insensitive).
-    public function get_shame_message($data = null)
+    // Canonical facade: $client->GetShameMessage()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_shame_message()
+    // resolves here too.
+    public function GetShameMessage($data = null)
     {
         require_once __DIR__ . '/entity/get_shame_message_entity.php';
         if ($data === null) {

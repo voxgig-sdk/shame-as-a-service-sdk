@@ -26,9 +26,9 @@ import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service'
 
 const client = new ShameAsAServiceSDK()
 
-// Load getshamemessage data
-const getshamemessage = await client.getshamemessage.load({})
-console.log(getshamemessage.data)
+// Load getshamemessage data (returns a GetShameMessage)
+const getshamemessage = await client.GetShameMessage().load()
+console.log(getshamemessage)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from shameasaservice_sdk import ShameAsAServiceSDK
 client = ShameAsAServiceSDK()
 
 
-# Load a specific getshamemessage
-getshamemessage = client.getshamemessage.load({"id": "example_id"})
+# Load a specific getshamemessage (returns the record, raises on error)
+getshamemessage = client.GetShameMessage().load({"id": "example_id"})
 print(getshamemessage)
 ```
 
@@ -98,8 +98,8 @@ require_once 'shameasaservice_sdk.php';
 $client = new ShameAsAServiceSDK();
 
 
-// Load a specific getshamemessage
-$getshamemessage = $client->getshamemessage()->load(["id" => "example_id"]);
+// Load a specific getshamemessage (returns the bare record; throws on error)
+$getshamemessage = $client->GetShameMessage()->load(["id" => "example_id"]);
 print_r($getshamemessage);
 ```
 
@@ -123,8 +123,8 @@ require_relative "ShameAsAService_sdk"
 client = ShameAsAServiceSDK.new
 
 
-# Load a specific getshamemessage
-getshamemessage = client.getshamemessage.load({ "id" => "example_id" })
+# Load a specific getshamemessage (returns the bare record; raises on error)
+getshamemessage = client.GetShameMessage.load({ "id" => "example_id" })
 puts getshamemessage
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific getshamemessage
-local getshamemessage, err = client:getshamemessage():load({ id = "example_id" })
+local getshamemessage, err = client:GetShameMessage():load({ id = "example_id" })
 print(getshamemessage)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ShameAsAServiceSDK.test()
-const result = await client.getshamemessage.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const getshamemessage = await client.GetShameMessage().load({ id: 'test01' })
+// getshamemessage is a bare GetShameMessage populated with mock data
+console.log(getshamemessage)
 ```
 
 ### Python
 
 ```python
 client = ShameAsAServiceSDK.test()
-result = client.getshamemessage.load({"id": "test01"})
+getshamemessage = client.GetShameMessage().load({"id": "test01"})
+print(getshamemessage)
 ```
 
 ### PHP
 
 ```php
-$client = ShameAsAServiceSDK::test();
-$result = $client->getshamemessage()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ShameAsAServiceSDK::test([
+    "entity" => ["getshamemessage" => ["test01" => ["id" => "test01"]]],
+]);
+$getshamemessage = $client->GetShameMessage()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.GetShameMessage(nil).Load(
 ### Ruby
 
 ```ruby
-client = ShameAsAServiceSDK.test
-result = client.getshamemessage.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ShameAsAServiceSDK.test({
+  "entity" => { "getshamemessage" => { "test01" => { "id" => "test01" } } },
+})
+getshamemessage = client.GetShameMessage.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:getshamemessage():load({ id = "test01" })
+local result, err = client:GetShameMessage():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GetShameMessageEntity
 
 ```python
-get_shame_message = client.get_shame_message
+get_shame_message = client.GetShameMessage()
 ```
 
 ### Fields
@@ -99,7 +99,7 @@ get_shame_message = client.get_shame_message
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.get_shame_message.load({"id": "get_shame_message_id"})
+result = client.GetShameMessage().load({"id": "get_shame_message_id"})
 ```
 
 ### Common Methods

@@ -204,14 +204,7 @@ class ShameAsAServiceSDK {
 
 
 
-  _get_shame_message?: GetShameMessageEntity
-
-  // Idiomatic facade: `client.get_shame_message.list()` / `client.get_shame_message.load({ id })`.
-  get get_shame_message(): GetShameMessageEntity {
-    return (this._get_shame_message ??= new GetShameMessageEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.get_shame_message` instead. */
+  // Entity access: `client.GetShameMessage().list()` / `client.GetShameMessage().load({ id })`.
   GetShameMessage(data?: any) {
     const self = this
     return new GetShameMessageEntity(self,data)

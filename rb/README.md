@@ -32,8 +32,9 @@ client = ShameAsAServiceSDK.new
 
 ```ruby
 begin
-  result = client.getshamemessage.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare GetShameMessage record (raises on error).
+  getshamemessage = client.GetShameMessage.load({ "id" => "example_id" })
+  puts getshamemessage
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ShameAsAServiceSDK.test
+client = ShameAsAServiceSDK.test({
+  "entity" => { "getshamemessage" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.getshamemessage.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+getshamemessage = client.GetShameMessage.load({ "id" => "test01" })
+puts getshamemessage
 ```
 
 ### Use a custom fetch function
@@ -221,7 +226,7 @@ API path: `/`
 
 ### GetShameMessage
 
-Create an instance: `const get_shame_message = client.get_shame_message`
+Create an instance: `get_shame_message = client.GetShameMessage`
 
 #### Operations
 
@@ -240,8 +245,9 @@ Create an instance: `const get_shame_message = client.get_shame_message`
 
 #### Example: Load
 
-```ts
-const get_shame_message = await client.get_shame_message.load({ id: 'get_shame_message_id' })
+```ruby
+# load returns the bare GetShameMessage record (raises on error).
+get_shame_message = client.GetShameMessage.load({ "id" => "get_shame_message_id" })
 ```
 
 
@@ -316,7 +322,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-getshamemessage = client.getshamemessage
+getshamemessage = client.GetShameMessage
 getshamemessage.load({ "id" => "example_id" })
 
 # getshamemessage.data_get now returns the loaded getshamemessage data

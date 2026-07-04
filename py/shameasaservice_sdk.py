@@ -220,25 +220,15 @@ class ShameAsAServiceSDK:
         }
 
 
-    @property
-    def get_shame_message(self):
-        """Idiomatic facade: client.get_shame_message.list() / client.get_shame_message.load({"id": ...})."""
-        from entity.get_shame_message_entity import GetShameMessageEntity
-        cached = getattr(self, "_get_shame_message", None)
-        if cached is None:
-            cached = GetShameMessageEntity(self, None)
-            self._get_shame_message = cached
-        return cached
-
-    def GetShameMessage(self, data=None):
-        # Deprecated: use client.get_shame_message instead.
+    def GetShameMessage(self, data=None) -> "GetShameMessageEntity":
+        """Entity factory: client.GetShameMessage().list({}) / client.GetShameMessage().load({"id": ...})."""
         from entity.get_shame_message_entity import GetShameMessageEntity
         return GetShameMessageEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ShameAsAServiceSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class ShameAsAServiceSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.get_shame_message_entity import GetShameMessageEntity

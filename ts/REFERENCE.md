@@ -109,7 +109,7 @@ Alias for `ShameAsAServiceSDK.test()`.
 ## GetShameMessageEntity
 
 ```ts
-const get_shame_message = client.get_shame_message
+const get_shame_message = client.GetShameMessage()
 ```
 
 ### Fields
@@ -128,7 +128,7 @@ const get_shame_message = client.get_shame_message
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.get_shame_message.load({ id: 'get_shame_message_id' })
+const result = await client.GetShameMessage().load({ id: 'get_shame_message_id' })
 ```
 
 ### Common Methods

@@ -33,10 +33,12 @@ client = ShameAsAServiceSDK()
 
 ### 3. Load a getshamemessage
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.getshamemessage.load({"id": "example_id"})
-    print(result)
+    getshamemessage = client.GetShameMessage().load({"id": "example_id"})
+    print(getshamemessage)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ShameAsAServiceSDK.test()
 
-result = client.getshamemessage.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+getshamemessage = client.GetShameMessage().load({"id": "test01"})
+# getshamemessage contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -221,7 +224,7 @@ API path: `/`
 
 ### GetShameMessage
 
-Create an instance: `const get_shame_message = client.get_shame_message`
+Create an instance: `get_shame_message = client.GetShameMessage()`
 
 #### Operations
 
@@ -240,8 +243,8 @@ Create an instance: `const get_shame_message = client.get_shame_message`
 
 #### Example: Load
 
-```ts
-const get_shame_message = await client.get_shame_message.load({ id: 'get_shame_message_id' })
+```python
+get_shame_message = client.GetShameMessage().load({"id": "get_shame_message_id"})
 ```
 
 
@@ -315,7 +318,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-getshamemessage = client.getshamemessage
+getshamemessage = client.GetShameMessage()
 getshamemessage.load({"id": "example_id"})
 
 # getshamemessage.data_get() now returns the loaded getshamemessage data

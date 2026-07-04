@@ -208,13 +208,7 @@ class ShameAsAServiceSDK
   end
 
 
-  # Idiomatic facade: client.get_shame_message.list / client.get_shame_message.load({ "id" => ... })
-  def get_shame_message
-    require_relative 'entity/get_shame_message_entity'
-    @get_shame_message ||= GetShameMessageEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_shame_message instead.
+  # Canonical facade: client.GetShameMessage.list / client.GetShameMessage.load({ "id" => ... })
   def GetShameMessage(data = nil)
     require_relative 'entity/get_shame_message_entity'
     GetShameMessageEntity.new(self, data)

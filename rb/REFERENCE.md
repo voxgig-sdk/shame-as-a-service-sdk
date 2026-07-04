@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## GetShameMessageEntity
 
 ```ruby
-get_shame_message = client.get_shame_message
+get_shame_message = client.GetShameMessage
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ get_shame_message = client.get_shame_message
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.get_shame_message.load({ "id" => "get_shame_message_id" })
+result = client.GetShameMessage.load({ "id" => "get_shame_message_id" })
 ```
 
 ### Common Methods
