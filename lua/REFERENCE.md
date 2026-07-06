@@ -90,10 +90,10 @@ local get_shame_message = client:GetShameMessage(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | Yes |  |
-| `detected_from_ip` | ``$BOOLEAN`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
+| `country` | `string` | Yes |  |
+| `detected_from_ip` | `boolean` | No |  |
+| `ip` | `string` | No |  |
+| `message` | `string` | Yes |  |
 
 ### Operations
 
@@ -102,7 +102,7 @@ local get_shame_message = client:GetShameMessage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetShameMessage():load({ id = "get_shame_message_id" })
+local result, err = client:GetShameMessage():load()
 ```
 
 ### Common Methods

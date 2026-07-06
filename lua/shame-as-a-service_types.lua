@@ -13,6 +13,10 @@
 ---@field message string
 
 ---@class GetShameMessageLoadMatch
+---@field country? string
+---@field detected_from_ip? boolean
+---@field ip? string
+---@field message? string
 
 local M = {}
 

@@ -221,7 +221,7 @@ class ShameAsAServiceSDK:
 
 
     def GetShameMessage(self, data=None) -> "GetShameMessageEntity":
-        """Entity factory: client.GetShameMessage().list({}) / client.GetShameMessage().load({"id": ...})."""
+        """Entity factory: client.GetShameMessage().list() / client.GetShameMessage().load({"id": ...})."""
         from entity.get_shame_message_entity import GetShameMessageEntity
         return GetShameMessageEntity(self, data)
 

@@ -8,7 +8,7 @@ Complete API reference for the ShameAsAService Python SDK.
 ### Constructor
 
 ```python
-from shame-as-a-service_sdk import ShameAsAServiceSDK
+from shameasaservice_sdk import ShameAsAServiceSDK
 
 client = ShameAsAServiceSDK(options)
 ```
@@ -87,10 +87,10 @@ get_shame_message = client.GetShameMessage()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | Yes |  |
-| `detected_from_ip` | ``$BOOLEAN`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
+| `country` | `str` | Yes |  |
+| `detected_from_ip` | `bool` | No |  |
+| `ip` | `str` | No |  |
+| `message` | `str` | Yes |  |
 
 ### Operations
 
@@ -99,7 +99,7 @@ get_shame_message = client.GetShameMessage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GetShameMessage().load({"id": "get_shame_message_id"})
+result = client.GetShameMessage().load()
 ```
 
 ### Common Methods

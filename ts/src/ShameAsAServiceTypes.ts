@@ -12,5 +12,10 @@ export interface GetShameMessage {
   message: string
 }
 
-export type GetShameMessageLoadMatch = Partial<GetShameMessage>
+export interface GetShameMessageLoadMatch {
+  country?: string
+  detected_from_ip?: boolean
+  ip?: string
+  message?: string
+}
 

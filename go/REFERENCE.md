@@ -97,10 +97,10 @@ get_shame_message := client.GetShameMessage(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | Yes |  |
-| `detected_from_ip` | ``$BOOLEAN`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
+| `country` | `string` | Yes |  |
+| `detected_from_ip` | `bool` | No |  |
+| `ip` | `string` | No |  |
+| `message` | `string` | Yes |  |
 
 ### Operations
 
@@ -109,7 +109,7 @@ get_shame_message := client.GetShameMessage(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetShameMessage(nil).Load(map[string]any{"id": "get_shame_message_id"}, nil)
+result, err := client.GetShameMessage(nil).Load(nil, nil)
 ```
 
 ### Common Methods

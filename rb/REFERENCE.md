@@ -8,7 +8,7 @@ Complete API reference for the ShameAsAService Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'shame-as-a-service_sdk'
+require_relative 'ShameAsAService_sdk'
 
 client = ShameAsAServiceSDK.new(options)
 ```
@@ -93,10 +93,10 @@ get_shame_message = client.GetShameMessage
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | ``$STRING`` | Yes |  |
-| `detected_from_ip` | ``$BOOLEAN`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
+| `country` | `String` | Yes |  |
+| `detected_from_ip` | `Boolean` | No |  |
+| `ip` | `String` | No |  |
+| `message` | `String` | Yes |  |
 
 ### Operations
 
@@ -105,7 +105,7 @@ get_shame_message = client.GetShameMessage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetShameMessage.load({ "id" => "get_shame_message_id" })
+result = client.GetShameMessage.load()
 ```
 
 ### Common Methods

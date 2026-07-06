@@ -21,7 +21,7 @@ class GetShameMessage
     public string $message;
 }
 
-/** Match filter for GetShameMessage#load (any subset of GetShameMessage fields). */
+/** Request payload for GetShameMessage#load. */
 class GetShameMessageLoadMatch
 {
     public ?string $country = null;

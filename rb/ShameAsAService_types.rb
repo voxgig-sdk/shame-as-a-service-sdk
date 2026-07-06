@@ -29,7 +29,7 @@ GetShameMessage = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GetShameMessage#load (any subset of GetShameMessage fields).
+# Request payload for GetShameMessage#load.
 #
 # @!attribute [rw] country
 #   @return [String, nil]

@@ -16,8 +16,7 @@ type GetShameMessage struct {
 	Message string `json:"message"`
 }
 
-// GetShameMessageLoadMatch mirrors the get_shame_message fields as an all-optional match
-// filter (Go analog of Partial<GetShameMessage>).
+// GetShameMessageLoadMatch is the typed request payload for GetShameMessage.LoadTyped.
 type GetShameMessageLoadMatch struct {
 	Country *string `json:"country,omitempty"`
 	DetectedFromIp *bool `json:"detected_from_ip,omitempty"`
