@@ -24,9 +24,9 @@ main: {
           url: "http://localhost:3000"
         }
       ]
+      summary: "A simple NestJS API that delivers country-specific shame messages."
       title: "Shame as a Service"
       version: "1.0.0"
+      website: "https://shame-as-a-service.vercel.app"
     }
   }
-}
-

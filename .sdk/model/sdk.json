@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -231,6 +228,7 @@
           "name": "MIT",
           "url": "https://opensource.org/licenses/MIT"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
@@ -241,8 +239,10 @@
             "url": "http://localhost:3000"
           }
         ],
+        "summary": "A simple NestJS API that delivers country-specific shame messages.",
         "title": "Shame as a Service",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://shame-as-a-service.vercel.app"
       },
       "option": {},
       "target": {
@@ -295,6 +295,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -345,6 +348,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

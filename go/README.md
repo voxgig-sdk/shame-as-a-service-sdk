@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single getshamemessage — the value is the loaded record.
-    getshamemessage, err := client.GetShameMessage(nil).Load(nil, nil)
+    // Load a single getShameMessage — the value is the loaded record.
+    getShameMessage, err := client.GetShameMessage(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(getshamemessage)
+    fmt.Println(getShameMessage)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getshamemessage, err := client.GetShameMessage(nil).Load(
+getShameMessage, err := client.GetShameMessage(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getshamemessage) // the returned mock data
+fmt.Println(getShameMessage) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    getshamemessage, err := client.GetShameMessage(nil).Load(nil, nil)
+    getShameMessage, err := client.GetShameMessage(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // getshamemessage is the returned record
+    // getShameMessage is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -274,7 +274,7 @@ API path: `/`
 
 ### GetShameMessage
 
-Create an instance: `get_shame_message := client.GetShameMessage(nil)`
+Create an instance: `getShameMessage := client.GetShameMessage(nil)`
 
 #### Operations
 
@@ -294,11 +294,11 @@ Create an instance: `get_shame_message := client.GetShameMessage(nil)`
 #### Example: Load
 
 ```go
-get_shame_message, err := client.GetShameMessage(nil).Load(nil, nil)
+getShameMessage, err := client.GetShameMessage(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_shame_message) // the loaded record
+fmt.Println(getShameMessage) // the loaded record
 ```
 
 

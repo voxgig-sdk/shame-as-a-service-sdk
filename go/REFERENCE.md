@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## GetShameMessageEntity
 
 ```go
-get_shame_message := client.GetShameMessage(nil)
+getShameMessage := client.GetShameMessage(nil)
+fmt.Println(getShameMessage.GetName()) // "get_shame_message"
 ```
 
 ### Fields
@@ -110,6 +111,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GetShameMessage(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
