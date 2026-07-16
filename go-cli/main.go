@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewShameAsAServiceSDK(nil)
+	// Configure from the environment: SHAME_AS_A_SERVICE_APIKEY carries the API key and
+	// SHAME_AS_A_SERVICE_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("SHAME_AS_A_SERVICE_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("SHAME_AS_A_SERVICE_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewShameAsAServiceSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
