@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ShameAsAService SDK exists test
 
 local sdk = require("shame-as-a-service_sdk")
 
