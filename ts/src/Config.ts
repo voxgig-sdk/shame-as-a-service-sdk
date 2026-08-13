@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'ShameAsAService',
   }
 
 
@@ -63,7 +63,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "detected_from_ip",
+          "name": "detectedFromIp",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 1
@@ -104,6 +104,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/",
               "parts": [],

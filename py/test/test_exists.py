@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ShameAsAService SDK exists test
 
 import pytest
 from shameasaservice_sdk import ShameAsAServiceSDK

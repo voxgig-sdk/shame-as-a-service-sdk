@@ -19,11 +19,15 @@ import {
 describe('GetShameMessageDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SHAMEASASERVICE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SHAMEASASERVICE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SHAME_AS_A_SERVICE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SHAME_AS_A_SERVICE_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new ShameAsAServiceSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -72,17 +76,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID': {},
-    'SHAMEASASERVICE_TEST_LIVE': 'FALSE',
+    'SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID': {},
+    'SHAME_AS_A_SERVICE_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.SHAMEASASERVICE_TEST_LIVE
+  const live = 'TRUE' === env.SHAME_AS_A_SERVICE_TEST_LIVE
 
   if (live) {
     const client = new ShameAsAServiceSDK({
     })
 
-    let idmap: any = env['SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID']
+    let idmap: any = env['SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

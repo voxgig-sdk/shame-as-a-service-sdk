@@ -34,7 +34,7 @@ module ShameAsAServiceConfig
             },
             {
               "active" => true,
-              "name" => "detected_from_ip",
+              "name" => "detectedFromIp",
               "req" => false,
               "type" => "`$BOOLEAN`",
               "index$" => 1,
@@ -75,6 +75,7 @@ module ShameAsAServiceConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "parts" => [],

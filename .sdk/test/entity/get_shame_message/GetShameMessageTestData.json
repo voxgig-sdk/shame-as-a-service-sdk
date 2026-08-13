@@ -3,21 +3,21 @@
     "get_shame_message": {
       "GET_SHAME_MESSAGE00": {
         "country": "s28",
-        "detected_from_ip": false,
+        "detectedFromIp": false,
         "ip": "s2a",
         "message": "s2b",
         "id": "GET_SHAME_MESSAGE00"
       },
       "GET_SHAME_MESSAGE01": {
         "country": "s50",
-        "detected_from_ip": false,
+        "detectedFromIp": false,
         "ip": "s52",
         "message": "s53",
         "id": "GET_SHAME_MESSAGE01"
       },
       "GET_SHAME_MESSAGE02": {
         "country": "s78",
-        "detected_from_ip": false,
+        "detectedFromIp": false,
         "ip": "s7a",
         "message": "s7b",
         "id": "GET_SHAME_MESSAGE02"
@@ -28,7 +28,7 @@
     "get_shame_message": {
       "get_shame_message_ref01": {
         "country": "sa0",
-        "detected_from_ip": false,
+        "detectedFromIp": false,
         "ip": "sa2",
         "message": "sa3"
       }

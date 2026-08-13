@@ -16,7 +16,7 @@ declare(strict_types=1);
 class GetShameMessage
 {
     public string $country;
-    public ?bool $detected_from_ip = null;
+    public ?bool $detectedFromIp = null;
     public ?string $ip = null;
     public string $message;
 }
@@ -25,7 +25,7 @@ class GetShameMessage
 class GetShameMessageLoadMatch
 {
     public ?string $country = null;
-    public ?bool $detected_from_ip = null;
+    public ?bool $detectedFromIp = null;
     public ?string $ip = null;
     public ?string $message = null;
 }

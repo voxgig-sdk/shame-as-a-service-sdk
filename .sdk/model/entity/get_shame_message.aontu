@@ -11,7 +11,7 @@ main: kit: entity: get_shame_message: {
       type: "`$STRING`"
     }
     {
-      name: "detected_from_ip"
+      name: "detectedFromIp"
       req: false
       type: "`$BOOLEAN`"
     }

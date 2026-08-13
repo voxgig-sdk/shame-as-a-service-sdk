@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from shameasaservice_sdk.utility.voxgig_struct import voxgig_struct as vs
 from shameasaservice_sdk import ShameAsAServiceSDK
-from core import helpers
+from shameasaservice_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _get_shame_message_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID": {},
-        "SHAMEASASERVICE_TEST_LIVE": "FALSE",
+        "SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID": {},
+        "SHAME_AS_A_SERVICE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("SHAMEASASERVICE_TEST_LIVE") == "TRUE"
+    live = env.get("SHAME_AS_A_SERVICE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

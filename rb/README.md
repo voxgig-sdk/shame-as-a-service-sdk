@@ -34,7 +34,7 @@ client = ShameAsAServiceSDK.new
 
 ```ruby
 begin
-  # load returns the bare GetShameMessage record (raises on error).
+  # load returns the ENTITY — call data_get for the GetShameMessage record (raises on error).
   getshamemessage = client.GetShameMessage.load()
   puts getshamemessage
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ShameAsAServiceSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 getshamemessage = client.GetShameMessage.load()
 puts getshamemessage
 ```
@@ -235,7 +236,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `country` |  |
-| `detected_from_ip` |  |
+| `detectedFromIp` |  |
 | `ip` |  |
 | `message` |  |
 
@@ -263,14 +264,14 @@ Create an instance: `get_shame_message = client.GetShameMessage`
 | Field | Type | Description |
 | --- | --- | --- |
 | `country` | `String` |  |
-| `detected_from_ip` | `Boolean` |  |
+| `detectedFromIp` | `Boolean` |  |
 | `ip` | `String` |  |
 | `message` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare GetShameMessage record (raises on error).
+# load returns the ENTITY — call data_get for the GetShameMessage record (raises on error).
 get_shame_message = client.GetShameMessage.load()
 ```
 

@@ -33,7 +33,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "detected_from_ip",
+            ["name"] = "detectedFromIp",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 1,
@@ -74,6 +74,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
                 ["parts"] = {},

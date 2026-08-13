@@ -26,8 +26,8 @@ import {
 describe('GetShameMessageEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SHAMEASASERVICE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SHAMEASASERVICE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SHAME_AS_A_SERVICE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SHAME_AS_A_SERVICE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ShameAsAServiceSDK.test()
@@ -62,7 +62,7 @@ describe('GetShameMessageEntity', async () => {
     // LOAD
     const get_shame_message_ref01_ent = client.GetShameMessage()
     const get_shame_message_ref01_match_dt0: any = {}
-    const get_shame_message_ref01_data_dt0 = await get_shame_message_ref01_ent.load(get_shame_message_ref01_match_dt0)
+    const get_shame_message_ref01_data_dt0 = (await get_shame_message_ref01_ent.load(get_shame_message_ref01_match_dt0)).data()
     assert(null != get_shame_message_ref01_data_dt0)
 
 

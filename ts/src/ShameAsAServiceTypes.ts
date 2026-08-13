@@ -7,14 +7,14 @@
 
 export interface GetShameMessage {
   country: string
-  detected_from_ip?: boolean
+  detectedFromIp?: boolean
   ip?: string
   message: string
 }
 
 export interface GetShameMessageLoadMatch {
   country?: string
-  detected_from_ip?: boolean
+  detectedFromIp?: boolean
   ip?: string
   message?: string
 }

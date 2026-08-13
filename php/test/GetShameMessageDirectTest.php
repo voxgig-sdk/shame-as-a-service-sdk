@@ -65,11 +65,11 @@ function get_shame_message_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "SHAMEASASERVICE_TEST_GET_SHAME_MESSAGE_ENTID" => [],
-        "SHAMEASASERVICE_TEST_LIVE" => "FALSE",
+        "SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID" => [],
+        "SHAME_AS_A_SERVICE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["SHAMEASASERVICE_TEST_LIVE"] === "TRUE";
+    $live = $env["SHAME_AS_A_SERVICE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

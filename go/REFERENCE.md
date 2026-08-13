@@ -99,7 +99,7 @@ fmt.Println(getShameMessage.GetName()) // "get_shame_message"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `country` | `string` | Yes |  |
-| `detected_from_ip` | `bool` | No |  |
+| `detectedFromIp` | `bool` | No |  |
 | `ip` | `string` | No |  |
 | `message` | `string` | Yes |  |
 

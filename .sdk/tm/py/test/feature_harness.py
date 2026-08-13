@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ShameAsAServiceControl
-from core.error import ShameAsAServiceError
-from core.result import ShameAsAServiceResult
-from core.spec import ShameAsAServiceSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import ShameAsAServiceControl
+from projectname_sdk.core.error import ShameAsAServiceError
+from projectname_sdk.core.result import ShameAsAServiceResult
+from projectname_sdk.core.spec import ShameAsAServiceSpec
 
 
 # True when this SDK was generated with the named feature.

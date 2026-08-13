@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = ShameAsAServiceSDK.test()
 
 const getshamemessage = await client.GetShameMessage().load()
-// getshamemessage is a bare entity populated with mock response data
+// getshamemessage is the entity, populated with mock response data
+// — call getshamemessage.data() for the record itself
 console.log(getshamemessage)
 ```
 
@@ -285,7 +286,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `country` |  |
-| `detected_from_ip` |  |
+| `detectedFromIp` |  |
 | `ip` |  |
 | `message` |  |
 
@@ -313,7 +314,7 @@ Create an instance: `const get_shame_message = client.GetShameMessage()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `country` | `string` |  |
-| `detected_from_ip` | `boolean` |  |
+| `detectedFromIp` | `boolean` |  |
 | `ip` | `string` |  |
 | `message` | `string` |  |
 

@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import ShameAsAServiceSDK
-from core.error import ShameAsAServiceError
-from core.result import ShameAsAServiceResult
-from core.response import ShameAsAServiceResponse
-from core.spec import ShameAsAServiceSpec
-from feature.base_feature import ShameAsAServiceBaseFeature
+from projectname_sdk.core.error import ShameAsAServiceError
+from projectname_sdk.core.result import ShameAsAServiceResult
+from projectname_sdk.core.response import ShameAsAServiceResponse
+from projectname_sdk.core.spec import ShameAsAServiceSpec
+from projectname_sdk.feature.base_feature import ShameAsAServiceBaseFeature
 
 
 def _client():

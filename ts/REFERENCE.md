@@ -117,7 +117,7 @@ const get_shame_message = client.GetShameMessage()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `country` | `string` | Yes |  |
-| `detected_from_ip` | `boolean` | No |  |
+| `detectedFromIp` | `boolean` | No |  |
 | `ip` | `string` | No |  |
 | `message` | `string` | Yes |  |
 

@@ -226,7 +226,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `country` |  |
-| `detected_from_ip` |  |
+| `detectedFromIp` |  |
 | `ip` |  |
 | `message` |  |
 
@@ -254,7 +254,7 @@ Create an instance: `local get_shame_message = client:GetShameMessage(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `country` | `string` |  |
-| `detected_from_ip` | `boolean` |  |
+| `detectedFromIp` | `boolean` |  |
 | `ip` | `string` |  |
 | `message` | `string` |  |
 

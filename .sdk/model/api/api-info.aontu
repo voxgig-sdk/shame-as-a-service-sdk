@@ -30,3 +30,5 @@ main: {
       website: "https://shame-as-a-service.vercel.app"
     }
   }
+}
+

@@ -43,8 +43,8 @@ class ShameAsAServiceTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('SHAMEASASERVICE_TEST_LIVE');
-        $override = self::getenv('SHAMEASASERVICE_TEST_OVERRIDE');
+        $live = self::getenv('SHAME_AS_A_SERVICE_TEST_LIVE');
+        $override = self::getenv('SHAME_AS_A_SERVICE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class ShameAsAServiceTestRunner
             }
         }
 
-        $explain = self::getenv('SHAMEASASERVICE_TEST_EXPLAIN');
+        $explain = self::getenv('SHAME_AS_A_SERVICE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['SHAMEASASERVICE_TEST_EXPLAIN'] = $explain;
+            $m['SHAME_AS_A_SERVICE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

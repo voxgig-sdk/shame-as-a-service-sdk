@@ -259,7 +259,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"country"` |  |
-| `"detected_from_ip"` |  |
+| `"detectedFromIp"` |  |
 | `"ip"` |  |
 | `"message"` |  |
 
@@ -287,7 +287,7 @@ Create an instance: `getShameMessage := client.GetShameMessage(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `country` | `string` |  |
-| `detected_from_ip` | `bool` |  |
+| `detectedFromIp` | `bool` |  |
 | `ip` | `string` |  |
 | `message` | `string` |  |
 

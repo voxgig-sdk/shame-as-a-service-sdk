@@ -23,8 +23,8 @@ module ShameAsAServiceTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("SHAMEASASERVICE_TEST_LIVE")
-    override = getenv("SHAMEASASERVICE_TEST_OVERRIDE")
+    live = getenv("SHAME_AS_A_SERVICE_TEST_LIVE")
+    override = getenv("SHAME_AS_A_SERVICE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ShameAsAServiceTestRunner
       end
     end
 
-    explain = getenv("SHAMEASASERVICE_TEST_EXPLAIN")
-    m["SHAMEASASERVICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("SHAME_AS_A_SERVICE_TEST_EXPLAIN")
+    m["SHAME_AS_A_SERVICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

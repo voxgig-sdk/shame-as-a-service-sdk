@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ ShameAsAServiceUtility::setRegistrar(function (ShameAsAServiceUtility $u): void 
     $u->prepare_params = [ShameAsAServicePrepareParams::class, 'call'];
     $u->prepare_path = [ShameAsAServicePreparePath::class, 'call'];
     $u->prepare_query = [ShameAsAServicePrepareQuery::class, 'call'];
+    $u->graphql_body = [ShameAsAServiceGraphql::class, 'body'];
+    $u->graphql_errors = [ShameAsAServiceGraphql::class, 'errors'];
     $u->result_basic = [ShameAsAServiceResultBasic::class, 'call'];
     $u->result_body = [ShameAsAServiceResultBody::class, 'call'];
     $u->result_headers = [ShameAsAServiceResultHeaders::class, 'call'];

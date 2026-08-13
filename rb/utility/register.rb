@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ShameAsAServiceUtility.registrar = ->(u) {
   u.prepare_params = ShameAsAServiceUtilities::PrepareParams
   u.prepare_path = ShameAsAServiceUtilities::PreparePath
   u.prepare_query = ShameAsAServiceUtilities::PrepareQuery
+  u.graphql_body = ShameAsAServiceUtilities::GraphqlBody
+  u.graphql_errors = ShameAsAServiceUtilities::GraphqlErrors
   u.result_basic = ShameAsAServiceUtilities::ResultBasic
   u.result_body = ShameAsAServiceUtilities::ResultBody
   u.result_headers = ShameAsAServiceUtilities::ResultHeaders

@@ -39,7 +39,7 @@ class ShameAsAServiceConfig
             ],
             [
               'active' => true,
-              'name' => 'detected_from_ip',
+              'name' => 'detectedFromIp',
               'req' => false,
               'type' => '`$BOOLEAN`',
               'index$' => 1,
@@ -80,6 +80,7 @@ class ShameAsAServiceConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
                   'parts' => [],

@@ -13,7 +13,7 @@
 # @!attribute [rw] country
 #   @return [String]
 #
-# @!attribute [rw] detected_from_ip
+# @!attribute [rw] detectedFromIp
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] ip
@@ -23,7 +23,7 @@
 #   @return [String]
 GetShameMessage = Struct.new(
   :country,
-  :detected_from_ip,
+  :detectedFromIp,
   :ip,
   :message,
   keyword_init: true
@@ -34,7 +34,7 @@ GetShameMessage = Struct.new(
 # @!attribute [rw] country
 #   @return [String, nil]
 #
-# @!attribute [rw] detected_from_ip
+# @!attribute [rw] detectedFromIp
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] ip
@@ -44,7 +44,7 @@ GetShameMessage = Struct.new(
 #   @return [String, nil]
 GetShameMessageLoadMatch = Struct.new(
   :country,
-  :detected_from_ip,
+  :detectedFromIp,
   :ip,
   :message,
   keyword_init: true

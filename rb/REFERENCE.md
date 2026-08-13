@@ -94,7 +94,7 @@ get_shame_message = client.GetShameMessage
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `country` | `String` | Yes |  |
-| `detected_from_ip` | `Boolean` | No |  |
+| `detectedFromIp` | `Boolean` | No |  |
 | `ip` | `String` | No |  |
 | `message` | `String` | Yes |  |
 
