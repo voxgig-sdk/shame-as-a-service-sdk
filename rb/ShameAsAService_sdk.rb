@@ -28,7 +28,7 @@ class ShameAsAServiceSDK
     utility = ShameAsAServiceUtility.new
     @_utility = utility
 
-    config = ShameAsAServiceConfig.make_config
+    config = ShameAsAServiceConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

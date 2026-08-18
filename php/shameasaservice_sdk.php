@@ -40,7 +40,7 @@ class ShameAsAServiceSDK
         $utility = new ShameAsAServiceUtility();
         $this->_utility = $utility;
 
-        $config = ShameAsAServiceConfig::make_config();
+        $config = ShameAsAServiceConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

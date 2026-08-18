@@ -23,8 +23,8 @@ class ShameAsAServiceSDK:
         utility = ShameAsAServiceUtility()
         self._utility = utility
 
-        from shameasaservice_sdk.config import make_config
-        config = make_config()
+        from shameasaservice_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
