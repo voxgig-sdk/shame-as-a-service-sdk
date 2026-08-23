@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ShameAsAService',
+        slug: "shame-as-a-service",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -57,19 +68,23 @@ class Config {
         {
           "name": "country",
           "req": true,
+          "short": "The country code for which the shame message was generated",
           "type": "`$STRING`"
         },
         {
           "name": "detectedFromIp",
+          "short": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "ip",
+          "short": "The IP address of the requester (when available)",
           "type": "`$STRING`"
         },
         {
           "name": "message",
           "req": true,
+          "short": "The shame message tailored to the specified or detected country",
           "type": "`$STRING`"
         }
       ],

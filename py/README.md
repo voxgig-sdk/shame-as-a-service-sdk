@@ -241,10 +241,10 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `detectedFromIp` |  |
-| `ip` |  |
-| `message` |  |
+| `country` | The country code for which the shame message was generated |
+| `detectedFromIp` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | The IP address of the requester (when available) |
+| `message` | The shame message tailored to the specified or detected country |
 
 Operations: Load.
 
@@ -269,10 +269,10 @@ Create an instance: `get_shame_message = client.GetShameMessage()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `str` |  |
-| `detectedFromIp` | `bool` |  |
-| `ip` | `str` |  |
-| `message` | `str` |  |
+| `country` | `str` | The country code for which the shame message was generated |
+| `detectedFromIp` | `bool` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | `str` | The IP address of the requester (when available) |
+| `message` | `str` | The shame message tailored to the specified or detected country |
 
 #### Example: Load
 

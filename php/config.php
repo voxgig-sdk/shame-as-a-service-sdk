@@ -33,6 +33,9 @@ class ShameAsAServiceConfig
         return [
             "main" => [
                 "name" => "ShameAsAService",
+                "slug" => "shame-as-a-service",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -56,19 +59,23 @@ class ShameAsAServiceConfig
             [
               'name' => 'country',
               'req' => true,
+              'short' => 'The country code for which the shame message was generated',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'detectedFromIp',
+              'short' => 'Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)',
               'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'ip',
+              'short' => 'The IP address of the requester (when available)',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'message',
               'req' => true,
+              'short' => 'The shame message tailored to the specified or detected country',
               'type' => '`$STRING`',
             ],
           ],

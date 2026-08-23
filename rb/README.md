@@ -235,10 +235,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `detectedFromIp` |  |
-| `ip` |  |
-| `message` |  |
+| `country` | The country code for which the shame message was generated |
+| `detectedFromIp` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | The IP address of the requester (when available) |
+| `message` | The shame message tailored to the specified or detected country |
 
 Operations: Load.
 
@@ -263,10 +263,10 @@ Create an instance: `get_shame_message = client.GetShameMessage`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `String` |  |
-| `detectedFromIp` | `Boolean` |  |
-| `ip` | `String` |  |
-| `message` | `String` |  |
+| `country` | `String` | The country code for which the shame message was generated |
+| `detectedFromIp` | `Boolean` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | `String` | The IP address of the requester (when available) |
+| `message` | `String` | The shame message tailored to the specified or detected country |
 
 #### Example: Load
 

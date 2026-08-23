@@ -6,7 +6,7 @@ The Golang SDK for the ShameAsAService API — an entity-oriented client using s
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.GetShameMessage(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,10 +258,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"country"` |  |
-| `"detectedFromIp"` |  |
-| `"ip"` |  |
-| `"message"` |  |
+| `"country"` | The country code for which the shame message was generated |
+| `"detectedFromIp"` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `"ip"` | The IP address of the requester (when available) |
+| `"message"` | The shame message tailored to the specified or detected country |
 
 Operations: Load.
 
@@ -286,10 +286,10 @@ Create an instance: `getShameMessage := client.GetShameMessage(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `detectedFromIp` | `bool` |  |
-| `ip` | `string` |  |
-| `message` | `string` |  |
+| `country` | `string` | The country code for which the shame message was generated |
+| `detectedFromIp` | `bool` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | `string` | The IP address of the requester (when available) |
+| `message` | `string` | The shame message tailored to the specified or detected country |
 
 #### Example: Load
 

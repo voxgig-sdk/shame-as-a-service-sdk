@@ -90,10 +90,10 @@ local get_shame_message = client:GetShameMessage(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `string` | Yes |  |
-| `detectedFromIp` | `boolean` | No |  |
-| `ip` | `string` | No |  |
-| `message` | `string` | Yes |  |
+| `country` | `string` | Yes | The country code for which the shame message was generated |
+| `detectedFromIp` | `boolean` | No | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | `string` | No | The IP address of the requester (when available) |
+| `message` | `string` | Yes | The shame message tailored to the specified or detected country |
 
 ### Operations
 

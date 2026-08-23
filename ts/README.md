@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -285,10 +285,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `detectedFromIp` |  |
-| `ip` |  |
-| `message` |  |
+| `country` | The country code for which the shame message was generated |
+| `detectedFromIp` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | The IP address of the requester (when available) |
+| `message` | The shame message tailored to the specified or detected country |
 
 Operations: load.
 
@@ -313,10 +313,10 @@ Create an instance: `const get_shame_message = client.GetShameMessage()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `detectedFromIp` | `boolean` |  |
-| `ip` | `string` |  |
-| `message` | `string` |  |
+| `country` | `string` | The country code for which the shame message was generated |
+| `detectedFromIp` | `boolean` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | `string` | The IP address of the requester (when available) |
+| `message` | `string` | The shame message tailored to the specified or detected country |
 
 #### Example: Load
 

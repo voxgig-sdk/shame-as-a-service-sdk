@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "ShameAsAService",
+			"slug": "shame-as-a-service",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,19 +37,23 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "country",
 						"req": true,
+						"short": "The country code for which the shame message was generated",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "detectedFromIp",
+						"short": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "ip",
+						"short": "The IP address of the requester (when available)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "message",
 						"req": true,
+						"short": "The shame message tailored to the specified or detected country",
 						"type": "`$STRING`",
 					},
 				},

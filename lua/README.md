@@ -225,10 +225,10 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `detectedFromIp` |  |
-| `ip` |  |
-| `message` |  |
+| `country` | The country code for which the shame message was generated |
+| `detectedFromIp` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | The IP address of the requester (when available) |
+| `message` | The shame message tailored to the specified or detected country |
 
 Operations: Load.
 
@@ -253,10 +253,10 @@ Create an instance: `local get_shame_message = client:GetShameMessage(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `detectedFromIp` | `boolean` |  |
-| `ip` | `string` |  |
-| `message` | `string` |  |
+| `country` | `string` | The country code for which the shame message was generated |
+| `detectedFromIp` | `boolean` | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | `string` | The IP address of the requester (when available) |
+| `message` | `string` | The shame message tailored to the specified or detected country |
 
 #### Example: Load
 

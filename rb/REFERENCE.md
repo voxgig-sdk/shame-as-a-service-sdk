@@ -93,10 +93,10 @@ get_shame_message = client.GetShameMessage
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `String` | Yes |  |
-| `detectedFromIp` | `Boolean` | No |  |
-| `ip` | `String` | No |  |
-| `message` | `String` | Yes |  |
+| `country` | `String` | Yes | The country code for which the shame message was generated |
+| `detectedFromIp` | `Boolean` | No | Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false) |
+| `ip` | `String` | No | The IP address of the requester (when available) |
+| `message` | `String` | Yes | The shame message tailored to the specified or detected country |
 
 ### Operations
 
