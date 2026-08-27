@@ -42,6 +42,7 @@ class ShameAsAServiceConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
