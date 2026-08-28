@@ -33,20 +33,8 @@ GetShameMessage = Struct.new(
 #
 # @!attribute [rw] country
 #   @return [String, nil]
-#
-# @!attribute [rw] detectedFromIp
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] ip
-#   @return [String, nil]
-#
-# @!attribute [rw] message
-#   @return [String, nil]
 GetShameMessageLoadMatch = Struct.new(
   :country,
-  :detectedFromIp,
-  :ip,
-  :message,
   keyword_init: true
 )
 

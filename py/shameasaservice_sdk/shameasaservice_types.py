@@ -28,6 +28,3 @@ class GetShameMessage(GetShameMessageRequired, total=False):
 
 class GetShameMessageLoadMatch(TypedDict, total=False):
     country: str
-    detectedFromIp: bool
-    ip: str
-    message: str

@@ -14,9 +14,6 @@
 
 ---@class GetShameMessageLoadMatch
 ---@field country? string
----@field detectedFromIp? boolean
----@field ip? string
----@field message? string
 
 local M = {}
 

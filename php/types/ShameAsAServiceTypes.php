@@ -25,8 +25,5 @@ class GetShameMessage
 class GetShameMessageLoadMatch
 {
     public ?string $country = null;
-    public ?bool $detectedFromIp = null;
-    public ?string $ip = null;
-    public ?string $message = null;
 }
 

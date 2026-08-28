@@ -23,9 +23,6 @@ type GetShameMessage struct {
 // GetShameMessageLoadMatch is the typed request payload for GetShameMessage.LoadTyped.
 type GetShameMessageLoadMatch struct {
 	Country *string `json:"country,omitempty"`
-	DetectedFromIp *bool `json:"detectedFromIp,omitempty"`
-	Ip *string `json:"ip,omitempty"`
-	Message *string `json:"message,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

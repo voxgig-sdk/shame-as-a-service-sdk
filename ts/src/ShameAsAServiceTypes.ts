@@ -14,8 +14,5 @@ export interface GetShameMessage {
 
 export interface GetShameMessageLoadMatch {
   country?: string
-  detectedFromIp?: boolean
-  ip?: string
-  message?: string
 }
 
