@@ -87,7 +87,7 @@ module ShameAsAServiceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {
                     "exist" => [
                       "country",
@@ -97,6 +97,7 @@ module ShameAsAServiceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [],
                 },
               ],
             },

@@ -101,7 +101,7 @@ class ShameAsAServiceConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
-                  'parts' => [],
+                  'segments' => [],
                   'select' => [
                     'exist' => [
                       'country',
@@ -111,6 +111,7 @@ class ShameAsAServiceConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [],
                 ],
               ],
             ],
