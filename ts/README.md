@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service'
+import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service-sdk'
 
 const client = new ShameAsAServiceSDK()
 ```
@@ -407,7 +407,7 @@ shame-as-a-service/
 Import the SDK from the package root:
 
 ```ts
-import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service'
+import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service-sdk'
 ```
 
 ### Entity state

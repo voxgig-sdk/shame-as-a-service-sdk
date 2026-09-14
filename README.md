@@ -105,7 +105,7 @@ local result, err = client:GetShameMessage():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/shame-as-a-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases) |
+| TypeScript | `@voxgig-sdk/shame-as-a-service-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases) |
 | Python | `voxgig-sdk-shame-as-a-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases) |
 | PHP | `voxgig-sdk/shame-as-a-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/shame-as-a-service-sdk/go` | `go get github.com/voxgig-sdk/shame-as-a-service-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:GetShameMessage():load()
 ### TypeScript
 
 ```ts
-import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service'
+import { ShameAsAServiceSDK } from '@voxgig-sdk/shame-as-a-service-sdk'
 
 const client = new ShameAsAServiceSDK()
 

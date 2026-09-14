@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/shame-as-a-service",
+  "name": "@voxgig-sdk/shame-as-a-service-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Shame as a Service public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
