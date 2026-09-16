@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { ShameAsAServiceSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('GetShameMessageEntity', async () => {
 
     const live = 'TRUE' === process.env.SHAME_AS_A_SERVICE_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'get_shame_message.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'get_shame_message.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"country","req":true,"short":"The country code for which the shame message was generated","type":"`$STRING`","index$":0},{"active":true,"name":"detectedFromIp","req":false,"short":"Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)","type":"`$BOOLEAN`","index$":1},{"active":true,"name":"ip","req":false,"short":"The IP address of the requester (when available)","type":"`$STRING`","index$":2},{"active":true,"name":"message","req":true,"short":"The shame message tailored to the specified or detected country","type":"`$STRING`","index$":3}],"name":"get_shame_message","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"query":[{"active":true,"example":"usa","kind":"query","name":"country","orig":"country","reqd":false,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /","json":"{\"operationId\":\"getShameMessage\",\"parameters\":[{\"description\":\"Optional country code to get country-specific shame messages. Supported values: usa, india, china, uk, germany, japan, brazil, russia, france, canada, australia, south-korea, mexico, spain, italy, poland\",\"in\":\"query\",\"name\":\"country\",\"required\":false,\"schema\":{\"enum\":[\"usa\",\"india\",\"china\",\"uk\",\"germany\",\"japan\",\"brazil\",\"russia\",\"france\",\"canada\",\"australia\",\"south-korea\",\"mexico\",\"spain\",\"italy\",\"poland\"],\"example\":\"usa\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"autoDetected\":{\"summary\":\"Shame message with auto-detected country\",\"value\":{\"country\":\"india\",\"detectedFromIp\":true,\"ip\":\"192.168.1.1\",\"message\":\"Shame! Your code is more broken than a Mumbai local train during rush hour.\"}},\"withCountryParam\":{\"summary\":\"Shame message with country parameter\",\"value\":{\"country\":\"usa\",\"detectedFromIp\":false,\"ip\":\"192.168.1.1\",\"message\":\"Shame on you! Your code has more bugs than a Silicon Valley startup has pivots.\"}}},\"schema\":{\"properties\":{\"country\":{\"description\":\"The country code for which the shame message was generated\",\"example\":\"usa\",\"type\":\"string\"},\"detectedFromIp\":{\"description\":\"Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)\",\"example\":true,\"type\":\"boolean\"},\"ip\":{\"description\":\"The IP address of the requester (when available)\",\"example\":\"192.168.1.1\",\"type\":\"string\"},\"message\":{\"description\":\"The shame message tailored to the specified or detected country\",\"example\":\"Shame on you! Your code has more bugs than a Silicon Valley startup has pivots.\",\"type\":\"string\"}},\"required\":[\"message\",\"country\"],\"type\":\"object\"}}},\"description\":\"Successfully returned a shame message\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Rate limit exceeded. Maximum 200 requests per minute per IP.\",\"message\":\"Too Many Requests\",\"statusCode\":429},\"schema\":{\"properties\":{\"error\":{\"description\":\"Detailed error description\",\"example\":\"Rate limit exceeded. Maximum 200 requests per minute per IP.\",\"type\":\"string\"},\"message\":{\"description\":\"Error message\",\"example\":\"Too Many Requests\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":429,\"type\":\"integer\"}},\"required\":[\"statusCode\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded - too many requests\"},\"500\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"An unexpected error occurred\",\"message\":\"Internal server error\",\"statusCode\":500},\"schema\":{\"properties\":{\"error\":{\"description\":\"Detailed error description\",\"example\":\"Rate limit exceeded. Maximum 200 requests per minute per IP.\",\"type\":\"string\"},\"message\":{\"description\":\"Error message\",\"example\":\"Too Many Requests\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":429,\"type\":\"integer\"}},\"required\":[\"statusCode\",\"message\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/","segments":[],"select":{"exist":["country"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"get_shame_message","name__orig":"get_shame_message","Name":"GetShameMessage","name_":"get_shame_message","name-":"get-shame-message","NAME":"GET_SHAME_MESSAGE","index$":0}, {"active":true,"entity":"get_shame_message","key$":"BasicGetShameMessageFlow","kind":"basic","name":"BasicGetShameMessageFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"get_shame_message_ref01","srcdatavar":"get_shame_message_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-get_shame_message_ref01"}}],"index$":0}]}, 'GetShameMessage')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID': idmap,
     'SHAME_AS_A_SERVICE_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.SHAME_AS_A_SERVICE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['SHAME_AS_A_SERVICE_TEST_GET_SHAME_MESSAGE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new ShameAsAServiceSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.SHAME_AS_A_SERVICE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

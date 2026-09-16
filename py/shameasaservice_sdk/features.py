@@ -1,12 +1,18 @@
 # ShameAsAService SDK feature factory
 
 from shameasaservice_sdk.feature.base_feature import ShameAsAServiceBaseFeature
+from shameasaservice_sdk.feature.ratelimit_feature import ShameAsAServiceRatelimitFeature
+from shameasaservice_sdk.feature.retry_feature import ShameAsAServiceRetryFeature
 from shameasaservice_sdk.feature.test_feature import ShameAsAServiceTestFeature
+from shameasaservice_sdk.feature.timeout_feature import ShameAsAServiceTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ShameAsAServiceBaseFeature(),
+    "ratelimit": lambda: ShameAsAServiceRatelimitFeature(),
+    "retry": lambda: ShameAsAServiceRetryFeature(),
     "test": lambda: ShameAsAServiceTestFeature(),
+    "timeout": lambda: ShameAsAServiceTimeoutFeature(),
 }
 
 
