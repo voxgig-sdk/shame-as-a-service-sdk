@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      get_shame_message: {
-      },
-
+        get_shame_message: {
+        },
+  
     }
   }
 
