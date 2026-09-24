@@ -24,42 +24,112 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "get_shame_message": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "country",
-              "req": true,
-              "short": "The country code for which the shame message was generated",
-              "type": "`$STRING`"
+          "fields": {
+            "country": {
+              "a": true,
+              "h": "Country",
+              "n": "country",
+              "r": true,
+              "sh": "The country code for which the shame message was generated",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "detectedFromIp",
-              "req": false,
-              "short": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
-              "type": "`$BOOLEAN`"
+            "detectedFromIp": {
+              "a": true,
+              "h": "Detected From Ip",
+              "n": "detectedFromIp",
+              "r": false,
+              "sh": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "ip",
-              "req": false,
-              "short": "The IP address of the requester (when available)",
-              "type": "`$STRING`"
+            "ip": {
+              "a": true,
+              "h": "Ip",
+              "n": "ip",
+              "r": false,
+              "sh": "The IP address of the requester (when available)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "message",
-              "req": true,
-              "short": "The shame message tailored to the specified or detected country",
-              "type": "`$STRING`"
+            "message": {
+              "a": true,
+              "h": "Message",
+              "n": "message",
+              "r": true,
+              "sh": "The shame message tailored to the specified or detected country",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "get_shame_message",
           "op": {
             "load": {
@@ -67,36 +137,36 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "usa",
-                        "kind": "query",
-                        "name": "country",
-                        "orig": "country",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "usa",
+                        "k": "query",
+                        "n": "country",
+                        "or": "country",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /",
-                    "json": "{\"operationId\":\"getShameMessage\",\"parameters\":[{\"description\":\"Optional country code to get country-specific shame messages. Supported values: usa, india, china, uk, germany, japan, brazil, russia, france, canada, australia, south-korea, mexico, spain, italy, poland\",\"in\":\"query\",\"name\":\"country\",\"required\":false,\"schema\":{\"enum\":[\"usa\",\"india\",\"china\",\"uk\",\"germany\",\"japan\",\"brazil\",\"russia\",\"france\",\"canada\",\"australia\",\"south-korea\",\"mexico\",\"spain\",\"italy\",\"poland\"],\"example\":\"usa\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"autoDetected\":{\"summary\":\"Shame message with auto-detected country\",\"value\":{\"country\":\"india\",\"detectedFromIp\":true,\"ip\":\"192.168.1.1\",\"message\":\"Shame! Your code is more broken than a Mumbai local train during rush hour.\"}},\"withCountryParam\":{\"summary\":\"Shame message with country parameter\",\"value\":{\"country\":\"usa\",\"detectedFromIp\":false,\"ip\":\"192.168.1.1\",\"message\":\"Shame on you! Your code has more bugs than a Silicon Valley startup has pivots.\"}}},\"schema\":{\"properties\":{\"country\":{\"description\":\"The country code for which the shame message was generated\",\"example\":\"usa\",\"type\":\"string\"},\"detectedFromIp\":{\"description\":\"Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)\",\"example\":true,\"type\":\"boolean\"},\"ip\":{\"description\":\"The IP address of the requester (when available)\",\"example\":\"192.168.1.1\",\"type\":\"string\"},\"message\":{\"description\":\"The shame message tailored to the specified or detected country\",\"example\":\"Shame on you! Your code has more bugs than a Silicon Valley startup has pivots.\",\"type\":\"string\"}},\"required\":[\"message\",\"country\"],\"type\":\"object\"}}},\"description\":\"Successfully returned a shame message\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Rate limit exceeded. Maximum 200 requests per minute per IP.\",\"message\":\"Too Many Requests\",\"statusCode\":429},\"schema\":{\"properties\":{\"error\":{\"description\":\"Detailed error description\",\"example\":\"Rate limit exceeded. Maximum 200 requests per minute per IP.\",\"type\":\"string\"},\"message\":{\"description\":\"Error message\",\"example\":\"Too Many Requests\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":429,\"type\":\"integer\"}},\"required\":[\"statusCode\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded - too many requests\"},\"500\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"An unexpected error occurred\",\"message\":\"Internal server error\",\"statusCode\":500},\"schema\":{\"properties\":{\"error\":{\"description\":\"Detailed error description\",\"example\":\"Rate limit exceeded. Maximum 200 requests per minute per IP.\",\"type\":\"string\"},\"message\":{\"description\":\"Error message\",\"example\":\"Too Many Requests\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":429,\"type\":\"integer\"}},\"required\":[\"statusCode\",\"message\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/",
-                  "segments": [],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/",
+                  "q": {
                     "exist": [
                       "country"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -525,17 +595,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "get_shame_message_ref01",
                 "srcdatavar": "get_shame_message_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

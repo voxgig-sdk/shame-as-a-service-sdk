@@ -1,7 +1,7 @@
 // Typed models for the ShameAsAService SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,10 +14,6 @@ import (
 
 // GetShameMessage is the typed data model for the get_shame_message entity.
 type GetShameMessage struct {
-	Country string `json:"country"`
-	DetectedFromIp *bool `json:"detectedFromIp,omitempty"`
-	Ip *string `json:"ip,omitempty"`
-	Message string `json:"message"`
 }
 
 // GetShameMessageLoadMatch is the typed request payload for GetShameMessage.LoadTyped.

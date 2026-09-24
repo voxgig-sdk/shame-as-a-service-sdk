@@ -91,25 +91,29 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "country",
+						"title": "Country",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The country code for which the shame message was generated",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "detectedFromIp",
-						"short": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
+						"title": "Detected From Ip",
 						"type": "`$BOOLEAN`",
+						"short": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
 					},
 					map[string]any{
 						"name": "ip",
-						"short": "The IP address of the requester (when available)",
+						"title": "Ip",
 						"type": "`$STRING`",
+						"short": "The IP address of the requester (when available)",
 					},
 					map[string]any{
 						"name": "message",
+						"title": "Message",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The shame message tailored to the specified or detected country",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "get_shame_message",
@@ -119,31 +123,32 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "usa",
-											"kind": "query",
-											"name": "country",
-											"orig": "country",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/",
 								"segments": []any{},
+								"parts": []any{},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "country",
+											"orig": "country",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "usa",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"country",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{},
 							},
 						},
 					},

@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -114,25 +107,29 @@ class Config {
             "fields": [
                 {
                     "name": "country",
+                    "title": "Country",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "The country code for which the shame message was generated",
-                    "type": "`$STRING`"
+                    "short": "The country code for which the shame message was generated"
                 },
                 {
                     "name": "detectedFromIp",
-                    "short": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
-                    "type": "`$BOOLEAN`"
+                    "title": "Detected From Ip",
+                    "type": "`$BOOLEAN`",
+                    "short": "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)"
                 },
                 {
                     "name": "ip",
-                    "short": "The IP address of the requester (when available)",
-                    "type": "`$STRING`"
+                    "title": "Ip",
+                    "type": "`$STRING`",
+                    "short": "The IP address of the requester (when available)"
                 },
                 {
                     "name": "message",
+                    "title": "Message",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "The shame message tailored to the specified or detected country",
-                    "type": "`$STRING`"
+                    "short": "The shame message tailored to the specified or detected country"
                 }
             ],
             "name": "get_shame_message",
@@ -142,31 +139,32 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "usa",
-                                        "kind": "query",
-                                        "name": "country",
-                                        "orig": "country",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/",
                             "segments": [],
-                            "select": {
-                                "exist": [
-                                    "country"
-                                ]
-                            },
+                            "parts": [],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": []
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "country",
+                                        "orig": "country",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "usa"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "country"
+                                ]
+                            }
                         }
                     ]
                 }

@@ -99,25 +99,29 @@ module ShameAsAServiceConfig
           "fields" => [
             {
               "name" => "country",
+              "title" => "Country",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "The country code for which the shame message was generated",
-              "type" => "`$STRING`",
             },
             {
               "name" => "detectedFromIp",
-              "short" => "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
+              "title" => "Detected From Ip",
               "type" => "`$BOOLEAN`",
+              "short" => "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)",
             },
             {
               "name" => "ip",
-              "short" => "The IP address of the requester (when available)",
+              "title" => "Ip",
               "type" => "`$STRING`",
+              "short" => "The IP address of the requester (when available)",
             },
             {
               "name" => "message",
+              "title" => "Message",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "The shame message tailored to the specified or detected country",
-              "type" => "`$STRING`",
             },
           ],
           "name" => "get_shame_message",
@@ -127,31 +131,32 @@ module ShameAsAServiceConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "usa",
-                        "kind" => "query",
-                        "name" => "country",
-                        "orig" => "country",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "segments" => [],
+                  "parts" => [],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "country",
+                        "orig" => "country",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "usa",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "country",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [],
                 },
               ],
             },
