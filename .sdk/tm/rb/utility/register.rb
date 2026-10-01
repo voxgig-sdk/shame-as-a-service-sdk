@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 ShameAsAServiceUtility.registrar = ->(u) {
   u.clean = ShameAsAServiceUtilities::Clean
+  u.clean_add = ShameAsAServiceUtilities::CleanAdd
+  u.clean_explain = ShameAsAServiceUtilities::CleanExplain
   u.done = ShameAsAServiceUtilities::Done
   u.make_error = ShameAsAServiceUtilities::MakeError
   u.feature_add = ShameAsAServiceUtilities::FeatureAdd

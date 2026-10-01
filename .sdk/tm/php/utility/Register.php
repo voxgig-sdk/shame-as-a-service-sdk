@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 ShameAsAServiceUtility::setRegistrar(function (ShameAsAServiceUtility $u): void {
     $u->clean = [ShameAsAServiceClean::class, 'call'];
+    $u->clean_add = [ShameAsAServiceClean::class, 'add'];
+    $u->clean_explain = [ShameAsAServiceDone::class, 'clean_explain'];
     $u->done = [ShameAsAServiceDone::class, 'call'];
     $u->make_error = [ShameAsAServiceMakeError::class, 'call'];
     $u->feature_add = [ShameAsAServiceFeatureAdd::class, 'call'];

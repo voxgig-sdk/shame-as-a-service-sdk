@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases](https://github.com/voxgig-sdk/shame-as-a-service-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/shame-as-a-service-sdk
+composer config repositories.shame-as-a-service-sdk path ./shame-as-a-service-sdk/php
+composer require voxgig-sdk/shame-as-a-service-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
