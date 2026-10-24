@@ -19,8 +19,18 @@ const PLAN: any[] = [
       "country": "usa"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "country"
+    ],
+    "queryArgs": [
+      {
+        "name": "country",
+        "wire": "country"
+      }
     ],
     "auth": null,
     "status": 200,

@@ -79,6 +79,7 @@ module ShameAsAServiceConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -149,13 +150,14 @@ module ShameAsAServiceConfig
                         "type" => "`$STRING`",
                         "kind" => "query",
                         "example" => "usa",
+                        "field" => true,
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "country",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

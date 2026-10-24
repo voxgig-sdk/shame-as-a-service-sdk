@@ -12,6 +12,8 @@ type ShameAsAServiceError struct {
 	Ctx    *Context `json:"-"`
 	Result any
 	Spec   any
+	// The HTTP status, -1 when there was no response.
+	Status int
 }
 
 func NewShameAsAServiceError(code string, msg string, ctx *Context) *ShameAsAServiceError {
@@ -21,7 +23,12 @@ func NewShameAsAServiceError(code string, msg string, ctx *Context) *ShameAsASer
 		Code:               code,
 		Msg:                msg,
 		Ctx:                ctx,
+		Status:             -1,
 	}
+}
+
+func (e *ShameAsAServiceError) NotFound() bool {
+	return 404 == e.Status
 }
 
 func (e *ShameAsAServiceError) Error() string {
@@ -35,6 +42,7 @@ func (e *ShameAsAServiceError) Record() map[string]any {
 		"sdk":     e.Sdk,
 		"code":    e.Code,
 		"message": e.Msg,
+		"status":  e.Status,
 		"result":  e.Result,
 		"spec":    e.Spec,
 	}

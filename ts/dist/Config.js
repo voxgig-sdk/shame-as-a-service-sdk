@@ -87,6 +87,7 @@ class Config {
             },
             "optspec": {
                 "clearTimer": "`$FUNCTION`",
+                "now": "`$FUNCTION`",
                 "setTimer": "`$FUNCTION`"
             },
             "strict": false,
@@ -156,14 +157,15 @@ class Config {
                                         "orig": "country",
                                         "type": "`$STRING`",
                                         "kind": "query",
-                                        "example": "usa"
+                                        "example": "usa",
+                                        "field": true
                                     }
                                 ]
                             },
-                            "select": {
-                                "exist": [
-                                    "country"
-                                ]
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]

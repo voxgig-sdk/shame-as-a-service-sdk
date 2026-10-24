@@ -3,5 +3,17 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "A simple NestJS API that delivers country-specific shame messages. Perfect for adding a bit of humor to your applications or motivating your team with culturally-aware shame quotes. Because logs warn you, errors stop you, but shame changes you.",
+      "Local development server",
+      "Production server",
+      "Successfully returned a shame message",
+      "The IP address of the requester (when available)",
+      "The country code for which the shame message was generated",
+      "The shame message tailored to the specified or detected country",
+      "Whether the country was automatically detected from the IP address (true) or explicitly provided via query parameter (false)"
+    ]
+  }
 }
